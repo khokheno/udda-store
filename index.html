@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>عُدّة | عدد، كهرباء، إلكترونيات وإكسسوارات سيارات</title>
+<meta name="description" content="متجر عُدّة: أكثر من 2000 منتج للورشة والبيت والسيارة. توصيل لجميع المناطق والدفع عند الاستلام.">
+<meta name="theme-color" content="#1f3b4d">
+<meta property="og:title" content="متجر عُدّة">
+<meta property="og:description" content="عدد، كهرباء، إلكترونيات وإكسسوارات سيارات. الدفع عند الاستلام.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap">
+<style>
+/* Layout: workshop pegboard — sticky toolbar, category rail, dense product grid, slide-in cart, checkout as its own view */
+:root{
+  --bg:#f3f4f1; --surface:#ffffff; --ink:#1d2430; --muted:#5d6675; --line:#dde0da;
+  --accent:#e8a317; --accent-ink:#2a1d00; --deep:#1f3b4d; --deep-ink:#ffffff; --sale:#c2410c; --ok:#15803d; --err:#b91c1c;
+  --tile:#e7ebe6;
+  --display:"Lalezar","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#13181f; --surface:#1b222b; --ink:#e8ebef; --muted:#9aa4b2; --line:#2b3440;
+  --accent:#f0b43a; --accent-ink:#241800; --deep:#24485e; --deep-ink:#ffffff; --sale:#fb923c; --ok:#4ade80; --err:#f87171; --tile:#222b35; color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.topbar{background:var(--accent);color:var(--accent-ink);font-size:13px;font-weight:500;padding-top:env(safe-area-inset-top,0px)}
+.topbar .wrap{padding-block:6px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+header{position:sticky;top:0;z-index:20;background:var(--deep);color:var(--deep-ink)}
+header .wrap{padding-block:12px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.logo{font-family:var(--display);font-size:34px;line-height:1;display:flex;align-items:center;gap:10px;white-space:nowrap;text-decoration:none}
+.logo img{width:38px;height:38px}
+.logo small{font-family:var(--body);font-size:12px;opacity:.75;display:block;margin-top:4px}
+.search{flex:1;min-width:200px;display:flex}
+.search input{width:100%;font:inherit;padding:10px 14px;border-radius:8px;border:0;background:var(--surface);color:var(--ink)}
+.hbtns{display:flex;gap:8px}
+.btn{font:inherit;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;padding:10px 14px;cursor:pointer;text-decoration:none}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-deep{background:var(--deep);color:var(--deep-ink)}
+.btn-ghost{background:transparent;color:inherit;border:1px solid currentColor}
+.btn-wa{background:#1fa855;color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.cartbtn .n{background:var(--accent-ink);color:var(--accent);border-radius:999px;min-width:22px;padding:0 6px;font-size:12px;line-height:22px;text-align:center}
+.hero{padding-block:28px 8px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,44px);margin:0;line-height:1.2;text-wrap:balance}
+.hero p{margin:6px 0 0;color:var(--muted);max-width:60ch}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;padding-block:18px}
+.perk{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}
+.perk b{display:block}
+.perk span{color:var(--muted);font-size:13px}
+.perk i{width:36px;height:36px;border-radius:8px;background:var(--tile);display:grid;place-items:center;font-style:normal;flex:none;font-weight:700}
+.cats{display:flex;gap:8px;overflow-x:auto;padding-block:6px 14px;scrollbar-width:thin}
+.chip{font:inherit;font-size:14px;white-space:nowrap;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.chip small{color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--deep);color:var(--deep-ink);border-color:var(--deep)}
+.chip[aria-pressed="true"] small{color:var(--deep-ink);opacity:.8}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-block:4px 14px;color:var(--muted);font-size:14px}
+select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.thumb{position:relative;aspect-ratio:1/1;background:var(--tile);display:grid;place-items:center;color:var(--muted);max-width:100%}
+.thumb svg{width:56px;height:56px;opacity:.7}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px;background:#fff}
+.lthumb{width:48px;height:48px;border-radius:6px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none}
+.lname{display:flex;gap:10px;align-items:center}
+.thumb .sku{position:absolute;bottom:6px;left:8px;font-size:11px;font-variant-numeric:tabular-nums;opacity:.7;direction:ltr}
+.badge{position:absolute;top:8px;right:8px;background:var(--sale);color:#fff;font-size:12px;font-weight:700;border-radius:6px;padding:2px 7px}
+.oos{position:absolute;top:8px;left:8px;background:var(--ink);color:var(--bg);font-size:12px;border-radius:6px;padding:2px 7px}
+.info{padding:10px 12px 12px;display:flex;flex-direction:column;gap:8px;flex:1}
+.name{font-size:14px;font-weight:500;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:3.9em}
+.cat{font-size:12px;color:var(--muted)}
+.price{display:flex;align-items:baseline;gap:8px;margin-top:auto;font-variant-numeric:tabular-nums}
+.price b{font-size:18px}
+.price s{color:var(--muted);font-size:13px}
+.add{font:inherit;font-weight:700;font-size:14px;background:var(--deep);color:var(--deep-ink);border:0;border-radius:8px;padding:8px;cursor:pointer}
+.add:disabled{opacity:.45;cursor:not-allowed}
+.add.done{background:var(--accent);color:var(--accent-ink)}
+.more{display:flex;justify-content:center;padding-block:24px}
+.more button{font:inherit;font-weight:700;border:1px solid var(--deep);background:transparent;color:var(--ink);padding:10px 26px;border-radius:8px;cursor:pointer}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+/* checkout + pages */
+.page{padding-block:24px 10px}
+.page h1{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,36px);margin:0 0 16px}
+.page h2{font-size:18px;margin:0 0 12px}
+.co{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-weight:500;font-size:14px}
+.field .hint{font-size:12px;color:var(--muted)}
+.field .errmsg{font-size:13px;color:var(--err)}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:var(--err)}
+.sumline{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-variant-numeric:tabular-nums}
+.sumline.total{border-top:1px solid var(--line);margin-top:6px;padding-top:12px;font-size:19px;font-weight:700}
+.items{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;max-height:320px;overflow-y:auto}
+.item{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.item span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--muted)}
+.done-box{text-align:center;max-width:620px;margin:0 auto}
+.done-box .ok{width:64px;height:64px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;margin:0 auto 12px;font-size:34px}
+.ordno{font-size:30px;font-weight:700;letter-spacing:.04em;direction:ltr;font-variant-numeric:tabular-nums;background:var(--tile);border-radius:10px;padding:8px 18px;display:inline-block;margin:6px 0 14px}
+.steps{text-align:right;display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.steps div{display:flex;gap:10px;align-items:flex-start}
+.steps b.n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--deep);color:var(--deep-ink);display:grid;place-items:center;font-size:13px}
+.callout{background:color-mix(in srgb,var(--accent) 18%,var(--surface));border:1px solid var(--accent);border-radius:10px;padding:12px 14px;text-align:right}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:10px}
+.faq summary{font-weight:700;cursor:pointer}
+.faq p{margin:8px 0 0;color:var(--muted);max-width:70ch}
+.olist{display:flex;flex-direction:column;gap:12px}
+footer{margin-top:30px;background:var(--deep);color:var(--deep-ink)}
+footer .wrap{padding-block:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px}
+footer nav{display:flex;flex-direction:column;gap:6px}
+footer .logo{font-size:26px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+/* cart drawer */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(420px,100%);background:var(--surface);z-index:41;display:flex;flex-direction:column;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 0 40px rgba(0,0,0,.3)}
+.drawer h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0}
+.dhead{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line)}
+.x{font:inherit;font-size:24px;background:none;border:0;color:var(--ink);cursor:pointer;line-height:1}
+.lines{flex:1;overflow-y:auto;padding:8px 16px}
+.line{display:grid;grid-template-columns:1fr auto;gap:6px 10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:30px;height:30px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.lt{font-weight:700;font-variant-numeric:tabular-nums;align-self:center}
+.dfoot{padding:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.dfoot .btn{padding:13px}
+.toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;z-index:60;font-size:14px}
+@media (max-width:820px){.co{grid-template-columns:1fr}.co .summary{order:-1}}
+@media (max-width:520px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.price b{font-size:16px}.logo{font-size:28px}.hbtns .lbl{display:none}}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}.card:hover{border-color:var(--accent)}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>التوصيل لجميع المناطق</span><span>الدفع عند الاستلام</span><span>المندوب يتصل بك قبل يوم من التوصيل</span></div></div>
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="logo.svg" alt=""><div>عُدّة<small>كل ما تحتاجه للورشة والبيت</small></div></a>
+  <label class="search"><input id="q" type="search" placeholder="ابحث بين أكثر من 2,000 منتج…" aria-label="بحث"></label>
+  <div class="hbtns">
+    <a class="btn btn-ghost" href="#orders" title="طلباتي">📦<span class="lbl">طلباتي</span></a>
+    <button class="btn btn-accent cartbtn" id="openCart">السلة <span class="n" id="cartN">0</span></button>
+  </div>
+</div></header>
+
+<main>
+<!-- SHOP -->
+<section id="v-shop" class="wrap">
+  <div class="hero">
+    <h1>عدد، كهرباء، إلكترونيات وإكسسوارات سيارات</h1>
+    <p id="heroP">تشكيلة واسعة للمنزل والورشة والسيارة. اطلب الآن وادفع عند الاستلام.</p>
+  </div>
+  <div class="perks">
+    <div class="perk"><i>₪</i><div><b>الدفع عند الاستلام</b><span>لا تدفع شيئاً قبل وصول طلبك</span></div></div>
+    <div class="perk"><i>🚚</i><div><b>توصيل لجميع المناطق</b><span>رسوم توصيل موحدة <span class="shipfee"></span></span></div></div>
+    <div class="perk"><i>☎</i><div><b>نتصل بك قبل التوصيل</b><span>المندوب يتواصل معك قبل يوم</span></div></div>
+  </div>
+  <nav class="cats" id="cats" aria-label="الفئات"></nav>
+  <div class="bar"><span id="count"></span>
+    <label>ترتيب حسب <select id="sort">
+      <option value="new">الأحدث</option><option value="asc">السعر: من الأقل</option><option value="desc">السعر: من الأعلى</option><option value="off">أعلى خصم</option><option value="name">الاسم</option>
+    </select></label></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>لا توجد منتجات مطابقة. جرّب كلمة أخرى أو فئة مختلفة.</div>
+  <div class="more"><button id="more" hidden>عرض المزيد</button></div>
+</section>
+
+<!-- CHECKOUT -->
+<section id="v-checkout" class="wrap page" hidden>
+  <h1>إتمام الطلب</h1>
+  <div class="co">
+    <form class="panel" id="coForm" novalidate>
+      <h2>معلومات العميل</h2>
+      <div class="field"><label for="f-name">الاسم الكامل *</label><input id="f-name" autocomplete="name" required><span class="errmsg" hidden></span></div>
+      <div class="field"><label for="f-phone">رقم الهاتف *</label><input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="05XXXXXXXX" required><span class="hint">سيتصل بك المندوب على هذا الرقم قبل يوم من التوصيل</span><span class="errmsg" hidden></span></div>
+      <div class="field"><label for="f-phone2">رقم هاتف إضافي (اختياري)</label><input id="f-phone2" type="tel" inputmode="tel" dir="ltr"></div>
+      <h2 style="margin-top:8px">معلومات التوصيل</h2>
+      <div class="field"><label for="f-city">المدينة / البلدة *</label><input id="f-city" autocomplete="address-level2" required><span class="errmsg" hidden></span></div>
+      <div class="field"><label for="f-addr">العنوان بالتفصيل *</label><textarea id="f-addr" rows="2" autocomplete="street-address" placeholder="الحي، الشارع، علامة مميزة قريبة" required></textarea><span class="errmsg" hidden></span></div>
+      <div class="field"><label for="f-notes">ملاحظات (اختياري)</label><textarea id="f-notes" rows="2" placeholder="مثلاً: أفضل وقت للاتصال"></textarea></div>
+      <button class="btn btn-deep" type="submit" style="width:100%;padding:14px;font-size:17px">تأكيد الطلب</button>
+      <p class="note" style="margin:10px 0 0">الدفع نقداً عند الاستلام. لن تدفع أي مبلغ الآن.</p>
+    </form>
+    <aside class="panel summary">
+      <h2>ملخص الطلب</h2>
+      <div class="items" id="coItems"></div>
+      <div class="sumline"><span>المجموع الفرعي</span><span id="coSub"></span></div>
+      <div class="sumline"><span>التوصيل</span><span id="coShip"></span></div>
+      <div class="sumline total"><span>الإجمالي</span><span id="coTotal"></span></div>
+      <a href="#" class="note">← متابعة التسوق</a>
+    </aside>
+  </div>
+</section>
+
+<!-- DONE -->
+<section id="v-done" class="wrap page" hidden>
+  <div class="done-box panel">
+    <div class="ok">✓</div>
+    <h1 style="margin-bottom:4px">تم تسجيل طلبك</h1>
+    <div>رقم الطلب</div>
+    <div class="ordno" id="dNo"></div>
+    <div class="sumline total" style="border:0;justify-content:center;gap:12px"><span>الإجمالي شامل التوصيل:</span><span id="dTotal"></span></div>
+    <div class="callout" id="waBox">
+      <b>خطوة أخيرة لتأكيد الطلب:</b> اضغط الزر وأرسل الرسالة الجاهزة لنا على واتساب.
+      <div style="margin-top:10px"><a class="btn btn-wa" id="waBtn" target="_blank" rel="noopener" style="width:100%;padding:13px;font-size:16px">إرسال الطلب عبر واتساب</a></div>
+    </div>
+    <div class="steps">
+      <div><b class="n">1</b><span>نراجع طلبك ونجهّزه للشحن.</span></div>
+      <div><b class="n">2</b><span>يتصل بك مندوب التوصيل قبل يوم من موعد التسليم على الرقم <b id="dPhone" dir="ltr"></b>.</span></div>
+      <div><b class="n">3</b><span>تستلم طلبك وتدفع <b id="dTotal2"></b> نقداً للمندوب.</span></div>
+    </div>
+    <div class="items" id="dItems" style="text-align:right"></div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px"><a class="btn btn-deep" href="#">متابعة التسوق</a><a class="btn btn-ghost" href="#orders">طلباتي</a></div>
+  </div>
+</section>
+
+<!-- MY ORDERS -->
+<section id="v-orders" class="wrap page" hidden>
+  <h1>طلباتي</h1>
+  <p class="note">الطلبات المحفوظة على هذا الجهاز. لأي استفسار راسلنا على واتساب مع رقم الطلب.</p>
+  <div class="olist" id="olist"></div>
+</section>
+
+<!-- FAQ / POLICIES -->
+<section id="v-faq" class="wrap page faq" hidden>
+  <h1>الأسئلة الشائعة والسياسات</h1>
+  <details open><summary>كيف أطلب من المتجر؟</summary><p>أضف المنتجات إلى السلة، ثم اضغط "إتمام الطلب" وعبّئ اسمك ورقم هاتفك وعنوانك. يظهر لك رقم الطلب والإجمالي شاملاً التوصيل، ثم ترسل الطلب لنا على واتساب بضغطة واحدة.</p></details>
+  <details><summary>كيف أدفع؟</summary><p>الدفع نقداً عند الاستلام فقط. لا نطلب أي دفعة مسبقة.</p></details>
+  <details><summary>كم رسوم التوصيل؟</summary><p>رسوم التوصيل موحدة <span class="shipfee"></span> لجميع المناطق.</p></details>
+  <details><summary>متى يصل طلبي؟</summary><p>عادةً خلال 2 إلى 5 أيام عمل. يتصل بك مندوب التوصيل قبل يوم من موعد التسليم.</p></details>
+  <details><summary>هل يمكنني تعديل أو إلغاء طلبي؟</summary><p>نعم، قبل شحن الطلب. راسلنا على واتساب مع رقم الطلب.</p></details>
+  <details><summary>الإرجاع والاستبدال</summary><p>يمكنك فحص الطلب عند الاستلام. إذا وصلك منتج معيب أو مختلف عن طلبك، تواصل معنا خلال 7 أيام من الاستلام لاستبداله أو إرجاعه. يجب أن يكون المنتج بحالته الأصلية ومع تغليفه.</p></details>
+  <details><summary>الخصوصية</summary><p>نستخدم اسمك ورقم هاتفك وعنوانك فقط لتوصيل طلبك والتواصل معك بخصوصه، ولا نشاركها إلا مع شركة التوصيل.</p></details>
+  <details><summary>تواصل معنا</summary><p>واتساب: <b dir="ltr" class="waNum"></b></p></details>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div><div class="logo">عُدّة</div><p class="note" style="color:inherit;opacity:.8;margin:8px 0 0">جميع الأسعار بالشيكل (₪).<br>الدفع عند الاستلام.</p></div>
+  <nav><a href="#">المتجر</a><a href="#orders">طلباتي</a><a href="#faq">الأسئلة الشائعة</a><a href="#faq">الإرجاع والاستبدال</a></nav>
+  <div>تواصل معنا على واتساب<br><b dir="ltr" class="waNum"></b><br><span style="opacity:.7">© <span id="yr"></span> متجر عُدّة</span></div>
+</div></footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="سلة المشتريات">
+  <div class="dhead"><h2>سلة المشتريات</h2><button class="x" id="closeCart" aria-label="إغلاق">×</button></div>
+  <div class="lines" id="lines"></div>
+  <div class="dfoot">
+    <div class="sumline"><span>المجموع الفرعي</span><span id="cSub"></span></div>
+    <div class="sumline"><span>التوصيل</span><span class="shipfee"></span></div>
+    <div class="sumline total"><span>الإجمالي</span><span id="cTotal"></span></div>
+    <a class="btn btn-deep" id="toCheckout" href="#checkout">إتمام الطلب</a>
+  </div>
+</aside>
+<div class="toast" id="toast" hidden></div>
+
+<script src="products.js"></script>
+<script>
+/* ===== إعدادات المتجر ===== */
+const CONFIG = {
+  storeName: 'عُدّة',
+  whatsapp: '972515100532', // رقم واتساب بصيغة دولية بدون +
+  shipping: 70           // رسوم التوصيل الموحدة بالشيكل
+};
+/* ========================= */
+const P = window.PRODUCTS || []; // [id, name, price, original|0, cat, inStock]
+const CATS = [["car","السيارات والدراجات"],["mobile","جوال وكمبيوتر"],["elec","عدد كهربائية وملحقاتها"],["hand","عدد يدوية"],["measure","فحص وقياس"],["safety","سلامة وعناية شخصية"],["home","المنزل والحديقة"],["fix","تثبيت وتنظيم وربط"],["kits","أطقم وملحقات صيانة"],["vices","ملازم وأدوات مساعدة"],["small","أدوات صغيرة"],["clean","تشحيم وتنظيف"],["bags","صناديق وحقائب"],["stationery","قرطاسية وتسلية"],["gifts","هدايا وعروض"],["other","متفرقات"]];
+const ICONS = {
+ car:'<path d="M8 30h32M10 30v6h5v-6m18 0v6h5v-6M10 30l4-11h20l4 11" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/><circle cx="15" cy="26" r="2" fill="currentColor"/><circle cx="33" cy="26" r="2" fill="currentColor"/>',
+ elec:'<path d="M26 6L12 27h11l-3 15 16-22H25z" fill="currentColor"/>',
+ mobile:'<rect x="15" y="6" width="18" height="36" rx="3" stroke="currentColor" stroke-width="3" fill="none"/><path d="M21 36h6" stroke="currentColor" stroke-width="3"/>',
+ measure:'<circle cx="24" cy="26" r="15" stroke="currentColor" stroke-width="3" fill="none"/><path d="M24 26l7-8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>',
+ home:'<path d="M8 24L24 10l16 14M13 20v18h22V20" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/>',
+ safety:'<path d="M24 6l15 6v10c0 10-7 17-15 20C16 39 9 32 9 22V12z" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/>',
+ hand:'<path d="M14 34l12-12m0 0l-3-7 7-5 7 7-5 7z" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+ fix:'<circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="3" fill="none"/><circle cx="24" cy="24" r="5" fill="currentColor"/>',
+ stationery:'<path d="M12 36l4-12L32 8l8 8-16 16z" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/>',
+ other:'<rect x="9" y="14" width="30" height="24" rx="3" stroke="currentColor" stroke-width="3" fill="none"/><path d="M18 14v-4h12v4" stroke="currentColor" stroke-width="3" fill="none"/>'
+};
+ICONS.vices = ICONS.small = ICONS.hand; ICONS.kits = ICONS.fix; ICONS.clean = ICONS.home; ICONS.bags = ICONS.gifts = ICONS.other;
+const catLabel = Object.fromEntries(CATS);
+const r2 = v => Math.round(v*100)/100;
+const fmt = v => { v = r2(v); return (Number.isInteger(v) ? v.toLocaleString('en-US') : v.toFixed(2).replace(/0$/,'')) + ' ₪'; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const off = p => p[3] && p[3] > p[2] ? Math.round((1 - p[2]/p[3]) * 100) : 0;
+const IMG_BASE = 'https://3azooz.com/_next/image?url=%2Fapi%2Fuploads%2F';
+const img = (p, w=384) => p[6] ? IMG_BASE + encodeURIComponent(p[6]) + '&w=' + w + '&q=75' : '';
+const byId = new Map(P.map(p => [p[0], p]));
+const $ = id => document.getElementById(id);
+const store = {
+  get(k, d){ try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+let cart = store.get('udda-cart', {}); for (const id in cart) if (!byId.has(+id) || !byId.get(+id)[5]) delete cart[id];
+const saveCart = () => store.set('udda-cart', cart);
+let state = { cat:'all', q:'', sort:'new', shown:48 };
+
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(()=>t.hidden=true,1800); }
+function cartTotals(){ let n=0,sub=0; for (const id in cart){ const p=byId.get(+id); n+=cart[id]; sub+=cart[id]*p[2]; } sub=r2(sub); return {n, sub, ship: n?CONFIG.shipping:0, total: n? r2(sub+CONFIG.shipping):0}; }
+
+/* ---- shop ---- */
+function renderCats(){
+  const counts = {}; P.forEach(p => counts[p[4]] = (counts[p[4]]||0)+1);
+  const all = [['all','كل المنتجات',P.length],['sale','عروض وتخفيضات',P.filter(off).length]].concat(CATS.filter(c=>counts[c[0]]).map(c=>[c[0],c[1],counts[c[0]]]));
+  $('cats').innerHTML = all.map(([k,l,n]) => `<button class="chip" data-k="${k}" aria-pressed="${state.cat===k}">${l} <small>${n}</small></button>`).join('');
+}
+function list(){
+  const q = state.q.trim().toLowerCase().replace(/^#?u/,'');
+  let r = P.filter(p => (state.cat==='all' || (state.cat==='sale' ? off(p) : p[4]===state.cat)) && (!q || p[1].toLowerCase().includes(state.q.trim().toLowerCase()) || String(p[0])===q));
+  const s = state.sort;
+  if (s==='asc') r.sort((a,b)=>a[2]-b[2]); else if (s==='desc') r.sort((a,b)=>b[2]-a[2]);
+  else if (s==='off') r.sort((a,b)=>off(b)-off(a)); else if (s==='name') r.sort((a,b)=>a[1].localeCompare(b[1],'ar'));
+  else r.sort((a,b)=>(b[5]-a[5])||(b[0]-a[0]));
+  return r;
+}
+function card(p){
+  const o = off(p), inCart = cart[p[0]];
+  return `<article class="card"><div class="thumb"><svg viewBox="0 0 48 48" aria-hidden="true">${ICONS[p[4]]||ICONS.other}</svg>${p[6]?`<img src="${img(p)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">`:''}
+    ${o?`<span class="badge">-${o}%</span>`:''}${p[5]?'':'<span class="oos">نفد</span>'}<span class="sku">#U${p[0]}</span></div>
+    <div class="info"><div class="cat">${catLabel[p[4]]||''}</div><div class="name" title="${esc(p[1])}">${esc(p[1])}</div>
+    <div class="price"><b>${fmt(p[2])}</b>${o?`<s>${fmt(p[3])}</s>`:''}</div>
+    <button class="add${inCart?' done':''}" data-id="${p[0]}" ${p[5]?'':'disabled'}>${p[5]?(inCart?`في السلة (${inCart})`:'أضف للسلة'):'غير متوفر'}</button></div></article>`;
+}
+function render(){
+  const r = list();
+  $('count').textContent = `${r.length.toLocaleString('en-US')} منتج`;
+  $('grid').innerHTML = r.slice(0, state.shown).map(card).join('');
+  $('empty').hidden = r.length > 0;
+  $('more').hidden = r.length <= state.shown;
+  $('more').textContent = `عرض المزيد (${(r.length-state.shown).toLocaleString('en-US')} متبقي)`;
+}
+/* ---- cart ---- */
+function renderCart(){
+  const ids = Object.keys(cart); const t = cartTotals();
+  $('lines').innerHTML = ids.length ? ids.map(id => { const p = byId.get(+id), q = cart[id];
+    return `<div class="line"><div class="lname">${p[6]?`<img class="lthumb" src="${img(p,96)}" alt="" onerror="this.remove()">`:''}<span>${esc(p[1])}</span></div><div class="lt">${fmt(q*p[2])}</div>
+      <div class="qty"><button data-d="-1" data-id="${id}" aria-label="إنقاص">−</button><span>${q}</span><button data-d="1" data-id="${id}" aria-label="زيادة">+</button></div><div class="note">${fmt(p[2])} للقطعة</div></div>`; }).join('')
+    : '<p class="note" style="padding:20px 0">السلة فارغة. أضف منتجات لتظهر هنا.</p>';
+  $('cartN').textContent = t.n; $('cSub').textContent = fmt(t.sub); $('cTotal').textContent = fmt(t.total);
+  $('toCheckout').toggleAttribute('hidden', !t.n);
+}
+function openCart(v){ $('drawer').hidden = !v; $('scrim').hidden = !v; }
+
+/* ---- checkout ---- */
+function renderCheckout(){
+  const t = cartTotals();
+  if (!t.n){ location.hash = ''; toast('السلة فارغة'); return; }
+  $('coItems').innerHTML = Object.keys(cart).map(id=>{ const p=byId.get(+id); return `<div class="item"><span>${esc(p[1])} × ${cart[id]}</span><span>${fmt(cart[id]*p[2])}</span></div>`; }).join('');
+  $('coSub').textContent = fmt(t.sub); $('coShip').textContent = fmt(t.ship); $('coTotal').textContent = fmt(t.total);
+  const saved = store.get('udda-customer', null);
+  if (saved) for (const k of ['name','phone','phone2','city','addr']) if (!$('f-'+k).value) $('f-'+k).value = saved[k]||'';
+}
+const normPhone = s => { let d = String(s).replace(/[^\d+]/g,'').replace(/^\+/,'').replace(/^00/,''); if (/^97[02]/.test(d)) d = '0'+d.slice(3); return d; };
+function setErr(id, msg){ const el=$(id), m=el.parentElement.querySelector('.errmsg'); el.setAttribute('aria-invalid', msg?'true':'false'); if(m){ m.textContent=msg||''; m.hidden=!msg; } return !msg; }
+function makeOrderNo(){ const d=new Date(); const p=n=>String(n).padStart(2,'0'); return `UD${String(d.getFullYear()).slice(2)}${p(d.getMonth()+1)}${p(d.getDate())}-${Math.floor(1000+Math.random()*9000)}`; }
+function waLink(o){
+  const lines = [`طلب جديد من متجر ${CONFIG.storeName}`, `رقم الطلب: ${o.no}`, '', ...o.items.map(i=>`• ${i.name} (#U${i.id}) × ${i.qty} = ${fmt(i.qty*i.price)}`), '',
+    `المجموع: ${fmt(o.sub)}`, `التوصيل: ${fmt(o.ship)}`, `الإجمالي: ${fmt(o.total)}`, '',
+    `الاسم: ${o.c.name}`, `الهاتف: ${o.c.phone}${o.c.phone2?' / '+o.c.phone2:''}`, `المدينة: ${o.c.city}`, `العنوان: ${o.c.addr}`].concat(o.c.notes?[`ملاحظات: ${o.c.notes}`]:[]);
+  return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`;
+}
+$('coForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = k => $('f-'+k).value.trim();
+  const phone = normPhone(v('phone'));
+  let ok = true;
+  ok = setErr('f-name', v('name').length < 3 ? 'اكتب الاسم الكامل' : '') && ok;
+  ok = setErr('f-phone', !/^0\d{8,9}$/.test(phone) ? 'اكتب رقم هاتف صحيح، مثل 0599123456' : '') && ok;
+  ok = setErr('f-city', v('city').length < 2 ? 'اكتب اسم المدينة أو البلدة' : '') && ok;
+  ok = setErr('f-addr', v('addr').length < 4 ? 'اكتب العنوان بالتفصيل' : '') && ok;
+  if (!ok){ document.querySelector('[aria-invalid="true"]')?.focus(); return; }
+  const t = cartTotals();
+  const c = { name:v('name'), phone, phone2:normPhone(v('phone2')), city:v('city'), addr:v('addr'), notes:v('notes') };
+  const o = { no: makeOrderNo(), date: new Date().toISOString(), c, sub:t.sub, ship:t.ship, total:t.total,
+    items: Object.keys(cart).map(id=>{ const p=byId.get(+id); return {id:p[0], name:p[1], price:p[2], qty:cart[id]}; }) };
+  store.set('udda-customer', {name:c.name, phone:c.phone, phone2:c.phone2, city:c.city, addr:c.addr});
+  const orders = store.get('udda-orders', []); orders.unshift(o); store.set('udda-orders', orders.slice(0,50));
+  store.set('udda-last', o.no);
+  cart = {}; saveCart(); renderCart(); render();
+  location.hash = 'done';
+});
+function renderDone(){
+  const no = store.get('udda-last', null), o = store.get('udda-orders', []).find(x=>x.no===no);
+  if (!o){ location.hash=''; return; }
+  $('dNo').textContent = o.no; $('dTotal').textContent = fmt(o.total); $('dTotal2').textContent = fmt(o.total); $('dPhone').textContent = o.c.phone;
+  $('dItems').innerHTML = o.items.map(i=>`<div class="item"><span>${esc(i.name)} × ${i.qty}</span><span>${fmt(i.qty*i.price)}</span></div>`).join('')
+    + `<div class="item"><span>التوصيل</span><span>${fmt(o.ship)}</span></div>`;
+  $('waBtn').href = waLink(o); $('waBox').hidden = !CONFIG.whatsapp;
+}
+function renderOrders(){
+  const os = store.get('udda-orders', []);
+  $('olist').innerHTML = os.length ? os.map(o=>`<div class="panel"><div class="sumline"><b dir="ltr">${o.no}</b><span class="note">${new Date(o.date).toLocaleDateString('ar-EG')}</span></div>
+    ${o.items.map(i=>`<div class="item"><span>${esc(i.name)} × ${i.qty}</span><span>${fmt(i.qty*i.price)}</span></div>`).join('')}
+    <div class="sumline total"><span>الإجمالي شامل التوصيل</span><span>${fmt(o.total)}</span></div>
+    ${CONFIG.whatsapp?`<a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(o)}">إرسال الطلب عبر واتساب</a>`:''}</div>`).join('')
+    : '<p class="empty">لا توجد طلبات على هذا الجهاز بعد.</p>';
+}
+
+/* ---- routing ---- */
+const VIEWS = ['shop','checkout','done','orders','faq'];
+function route(){
+  const h = location.hash.slice(1); const v = VIEWS.includes(h) ? h : 'shop';
+  VIEWS.forEach(x => $('v-'+x).hidden = x!==v);
+  openCart(false);
+  if (v==='checkout') renderCheckout(); if (v==='done') renderDone(); if (v==='orders') renderOrders();
+  if (v!=='shop' || !h) window.scrollTo(0,0);
+}
+
+/* ---- events ---- */
+$('cats').addEventListener('click', e => { const b = e.target.closest('.chip'); if(!b) return; state.cat = b.dataset.k; state.shown = 48; renderCats(); render(); });
+let tq; $('q').addEventListener('input', e => { clearTimeout(tq); tq = setTimeout(()=>{ state.q = e.target.value; state.shown = 48; if (location.hash && location.hash!=='#') location.hash=''; render(); }, 150); });
+$('sort').addEventListener('change', e => { state.sort = e.target.value; render(); });
+$('more').addEventListener('click', () => { state.shown += 48; render(); });
+$('grid').addEventListener('click', e => { const b = e.target.closest('.add'); if(!b || b.disabled) return; const id = b.dataset.id; cart[id] = (cart[id]||0)+1; saveCart(); renderCart();
+  b.classList.add('done'); b.textContent = `في السلة (${cart[id]})`; toast('تمت الإضافة إلى السلة'); });
+$('lines').addEventListener('click', e => { const b = e.target.closest('button[data-d]'); if(!b) return; const id = b.dataset.id; cart[id] += +b.dataset.d; if (cart[id] <= 0) delete cart[id]; saveCart(); renderCart(); render(); });
+$('openCart').onclick = () => openCart(true); $('closeCart').onclick = () => openCart(false); $('scrim').onclick = () => openCart(false);
+document.addEventListener('keydown', e => { if (e.key==='Escape') openCart(false); });
+window.addEventListener('hashchange', route);
+
+document.querySelectorAll('.shipfee').forEach(el => el.textContent = fmt(CONFIG.shipping));
+document.querySelectorAll('.waNum').forEach(el => el.textContent = CONFIG.whatsapp ? '+'+CONFIG.whatsapp : '—');
+$('yr').textContent = new Date().getFullYear();
+renderCats(); render(); renderCart(); route();
+</script>
+</body>
+</html>
